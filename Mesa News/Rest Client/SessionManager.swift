@@ -18,7 +18,7 @@ class SessionManager {
     static var SIGN_UP: String = "\(API)/auth/signup"
     
     //MARK: - News
-    static var NEWS_FEED: String = "\(API)/news?current_page=%@&per_page=%@"
+    static var NEWS_FEED: String = "\(API)/news?current_page=%@&per_page=%@&published_at=%@"
     static var HIGHLIGHTS: String = "\(API)/news/highlights"
     
     static var TEST_TOKEN: String = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjU5LCJlbWFpbCI6ImRpbWFzLmdhYnJpZWxAenJvYmFuay5jb20uYnIifQ.a3j7sRx8FIedZCfDGLocduOYpcibfIenX7TVJjv6Sis"

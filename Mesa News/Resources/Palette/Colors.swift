@@ -10,4 +10,5 @@ enum Colors {
     static let primary =  UIColor(named: "Primary")!
     static let secondary =  UIColor(named: "Secondary")!
     static let text =  UIColor(named: "Text")!
+    static let background1 =  UIColor(named: "Background1")!
 }

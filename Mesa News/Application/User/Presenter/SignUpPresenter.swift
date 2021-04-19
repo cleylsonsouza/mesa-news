@@ -20,7 +20,7 @@ class SignUpPresenter: BasePresenterProtocol {
     }
     
     func doSignUp(data: SignUpDTO) {
-        self.view?.loading(show: true)
+        self.view?.loading!(show: true)
         
         let params = [
             "name": data.name!,
@@ -32,7 +32,7 @@ class SignUpPresenter: BasePresenterProtocol {
         let url = path.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
 
         service.POST(url: url, headers: [:], params, completionHandler: { (data, statusCode, success, headers) -> Void in
-            self.view?.loading(show: false)
+            self.view?.loading!(show: false)
             
             if success {
                 let user = User.getUserFrom(responseJSON: data!)

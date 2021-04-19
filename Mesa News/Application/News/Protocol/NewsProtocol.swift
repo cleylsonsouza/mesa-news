@@ -4,6 +4,8 @@
 //
 
 protocol NewsProtocol: BaseViewProtocol {
-    func requestNewsFeedWith(currentPage: Int?, perPage: Int?)
-    func confirmAPIResponse(data: NewsFeed, isFirstPage: Bool)
+    func requestNewsFeedWith(currentPage: Int?, perPage: Int?, publishedAt: String?)
+    func requestHightlights()
+    func confirmAPIResponseFor(data: NewsFeed, isFirstPage: Bool)
+    func confirmAPIResponseFor(data: NewsFeed)
 }
