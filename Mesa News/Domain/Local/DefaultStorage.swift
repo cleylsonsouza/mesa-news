@@ -15,7 +15,7 @@ class DefaultStorage {
             defaults.set(encodedObject, forKey: key)
             defaults.synchronize()
         } catch let signOutError as NSError {
-            print ("Error archiving data", signOutError.localizedDescription)
+            print("Error archiving data", signOutError.localizedDescription)
         }
     }
     
@@ -31,12 +31,12 @@ class DefaultStorage {
         defaults.set(nil, forKey: key)
     }
     
-    static func add(key: String, value: AnyObject){
+    static func add(key: String, value: AnyObject) {
         defaults.set(value, forKey: key)
         defaults.synchronize()
     }
     
-    static func get(key: String) -> String{
+    static func get(key: String) -> String {
         if let value = defaults.object(forKey: key) as? String {
             return value
         }

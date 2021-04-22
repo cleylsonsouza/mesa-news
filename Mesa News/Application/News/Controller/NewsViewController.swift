@@ -14,19 +14,15 @@ class NewsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var news: [NewsFeed.FeedData] = []
-    {
-        didSet
-        {
+    var news: [NewsFeed.FeedData] = [] {
+        didSet {
             if tableView != nil {
                 tableView.reloadData()
             }
         }
     }
-    var highlights: [NewsFeed.FeedData] = []
-    {
-        didSet
-        {
+    var highlights: [NewsFeed.FeedData] = [] {
+        didSet {
             if tableView != nil {
                 tableView.reloadData()
             }
@@ -62,7 +58,7 @@ class NewsViewController: UIViewController {
     }
 }
 
-//MARK: - View Protocol
+// MARK: - View Protocol
 extension NewsViewController: NewsProtocol {
     
     func requestHightlights() {
@@ -113,7 +109,7 @@ extension NewsViewController: NewsProtocol {
     }
 }
 
-//MARK: - Delegates and DataSources
+// MARK: - Delegates and DataSources
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -168,7 +164,7 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height ) && !isLoadingFeed){
+        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height ) && !isLoadingFeed) {
             self.isLoadingFeed = true
             self.currentPage += 1
             requestNewsFeedWith(currentPage: self.currentPage, perPage: nil, publishedAt: "")
@@ -181,8 +177,8 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         let activityVC = UIActivityViewController(activityItems: [item.url!], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = sender
         present(activityVC, animated: true, completion: nil)
-        activityVC.completionWithItemsHandler = { (activityType, completed:Bool, returnedItems:[Any]?, error: Error?) in
-            if completed  {
+        activityVC.completionWithItemsHandler = { (_, completed:Bool, _:[Any]?, _: Error?) in
+            if completed {
                 self.dismiss(animated: true, completion: nil)
             }
         }

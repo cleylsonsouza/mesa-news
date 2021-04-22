@@ -33,19 +33,19 @@ class SignInViewController: UIViewController {
     }
 }
 
-//MARK: - Button Views Actions
+// MARK: - Button Views Actions
 extension SignInViewController {
-    
+
     @objc func passwdButtonAction(sender: Any!) {
         let image = passcodeTextField.isSecureTextEntry ? #imageLiteral(resourceName: "ic_hide") : #imageLiteral(resourceName: "ic_show")
         passwdButton.setImage(image, for: .normal)
         passcodeTextField.isSecureTextEntry = !passcodeTextField.isSecureTextEntry
     }
-    
+
     @IBAction func didTapLoginButton(_ sender: Any) {
         validateCall()
     }
-    
+
     @IBAction func didTapNewUserButton(_ sender: Any) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             let controller = UIStoryboard.buildSignUpViewController()
@@ -56,7 +56,7 @@ extension SignInViewController {
     }
 }
 
-//MARK: - View Protocol
+// MARK: - View Protocol
 extension SignInViewController: UserSignInProtocol {
     
     func validateCall() {
@@ -115,6 +115,6 @@ extension SignInViewController: UserSignInProtocol {
         passwdButton.addTarget(self, action: #selector(passwdButtonAction), for: .touchUpInside)
         passcodeTextField.trailingView = passwdButton
         
-        loading = LoadingUtils().getOverlay(toV: view)
+        loading = LoadingUtils().getOverlay(toView: view)
     }
 }

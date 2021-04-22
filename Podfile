@@ -9,5 +9,6 @@ target 'Mesa News' do
   pod 'MaterialComponents/Cards+Theming'
   pod 'MaterialComponents/TextFields+Theming'
   pod 'MaterialComponents/Buttons+Theming'
+  pod 'SwiftLint'
 
 end

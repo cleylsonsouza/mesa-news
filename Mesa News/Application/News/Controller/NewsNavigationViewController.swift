@@ -10,6 +10,4 @@ class NewsNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    
 }

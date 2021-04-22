@@ -11,7 +11,7 @@ class SignUpPresenter: BasePresenterProtocol {
     
     var service: AlamofireService = RestClient()
     
-    func attach(view: NSObjectProtocol){
+    func attach(view: NSObjectProtocol) {
         self.view = view as? UserSignUpProtocol
     }
     
@@ -31,7 +31,7 @@ class SignUpPresenter: BasePresenterProtocol {
         let path = SessionManager.SIGN_UP
         let url = path.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
 
-        service.POST(url: url, headers: [:], params, completionHandler: { (data, statusCode, success, headers) -> Void in
+        service.POST(urlString: url, headers: [:], params, completionHandler: { (data, statusCode, success, _) -> Void in
             self.view?.loading!(show: false)
             
             if success {

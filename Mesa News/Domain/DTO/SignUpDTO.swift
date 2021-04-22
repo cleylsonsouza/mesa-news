@@ -6,7 +6,7 @@
 import Foundation
 
 class SignUpDTO: NSObject {
-    var name: String? = nil
-    var email: String? = nil
-    var pass: String? = nil
+    var name: String?
+    var email: String?
+    var pass: String?
 }

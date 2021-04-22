@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import Foundation
 import UIKit
 
 @objc protocol BaseViewProtocol: NSObjectProtocol {

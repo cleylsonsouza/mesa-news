@@ -35,7 +35,7 @@ class SignUpViewController: UIViewController {
 
 }
 
-//MARK: - Button Views Actions
+// MARK: - Button Views Actions
 extension SignUpViewController {
     
     @objc func passwdButtonAction(sender: Any!) {
@@ -53,7 +53,7 @@ extension SignUpViewController {
     }
 }
 
-//MARK: - View Protocol
+// MARK: - View Protocol
 extension SignUpViewController: UserSignUpProtocol {
     
     func validateCall() {
@@ -117,7 +117,7 @@ extension SignUpViewController: UserSignUpProtocol {
         passwdButton.addTarget(self, action: #selector(passwdButtonAction), for: .touchUpInside)
         passcodeTextField.trailingView = passwdButton
         
-        loading = LoadingUtils().getOverlay(toV: view)
+        loading = LoadingUtils().getOverlay(toView: view)
     }
     
 }

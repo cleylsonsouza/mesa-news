@@ -12,7 +12,7 @@ class NewsPresenter: BasePresenterProtocol {
     var service: AlamofireService = RestClient()
     var userStorage: User!
     
-    func attach(view: NSObjectProtocol){
+    func attach(view: NSObjectProtocol) {
         self.view = view as? NewsProtocol
         userStorage = UserStorage.user
     }
@@ -30,10 +30,11 @@ class NewsPresenter: BasePresenterProtocol {
         
         let path = SessionManager.HIGHLIGHTS
         let url = path.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-        
-        service.GET(url: url, headers: headers, completionHandler: { (data, statusCode, success) -> Void in
+
+        service.GET(urlString: url, headers: headers,
+                    completionHandler: { (data, statusCode, success) -> Void in
             self.view?.loading!(show: false)
-            
+
             if success {
                 let hightlights = NewsFeed.getFeedFrom(responseJSON: data!)
                 
@@ -43,23 +44,26 @@ class NewsPresenter: BasePresenterProtocol {
             }
         })
     }
-    
+
     func getNews(currentPage: Int?, perPage: Int?, publishedAt: String?) {
         self.view?.loading!(show: true)
-        
+
         let headers = [
             "Authorization": "Bearer \(userStorage.accessToken)"
         ] as HTTPHeaders
-        
-        let path = NSString(format: SessionManager.NEWS_FEED as NSString, String(currentPage!), String(perPage ?? 20), String(publishedAt ?? "")) as String
+
+        let path = NSString(format: SessionManager.NEWS_FEED as NSString,
+                            String(currentPage!), String(perPage ?? 20),
+                            String(publishedAt ?? "")) as String
         let url = path.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-        
-        service.GET(url: url, headers: headers, completionHandler: { (data, statusCode, success) -> Void in
+
+        service.GET(urlString: url, headers: headers,
+                    completionHandler: { (data, statusCode, success) -> Void in
             self.view?.loading!(show: false)
-            
+
             if success {
                 let feed = NewsFeed.getFeedFrom(responseJSON: data!)
-                
+
                 if currentPage == 1 {
                     self.view?.confirmAPIResponseFor(data: feed, isFirstPage: true)
                     return
